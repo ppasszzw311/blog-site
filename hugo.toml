@@ -1,0 +1,124 @@
+baseURL = 'https://ppasszzw311.github.io/blog-site/'
+languageCode = 'zh-tw'
+title = '我的部落格'
+theme = 'PaperMod'
+
+# 啟用 emoji 支援
+enableEmoji = true
+
+# 啟用 Git 資訊
+enableGitInfo = true
+
+# 分頁設定
+[pagination]
+  pagerSize = 10
+
+[params]
+  # 網站描述
+  description = "一個使用 Hugo 建立的現代化部落格"
+  author = "Pablo Chen"
+  
+  # 首頁模式 - profile 或 home
+  homeInfoParams.Title = "歡迎來到我的部落格 👋"
+  homeInfoParams.Content = "這裡分享技術文章、生活隨筆和各種有趣的內容"
+  
+  # 顯示閱讀時間
+  ShowReadingTime = true
+  
+  # 顯示分享按鈕
+  ShowShareButtons = true
+  
+  # 顯示文章導航
+  ShowPostNavLinks = true
+  
+  # 顯示麵包屑導航
+  ShowBreadCrumbs = true
+  
+  # 顯示程式碼複製按鈕
+  ShowCodeCopyButtons = true
+  
+  # 顯示目錄
+  ShowToc = true
+  TocOpen = false
+  
+  # 啟用搜尋
+  fuseOpts.isCaseSensitive = false
+  fuseOpts.shouldSort = true
+  fuseOpts.location = 0
+  fuseOpts.distance = 1000
+  fuseOpts.threshold = 0.4
+  fuseOpts.minMatchCharLength = 0
+  fuseOpts.keys = ["title", "permalink", "summary", "content"]
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# 選單配置
+[[menu.main]]
+  identifier = "home"
+  name = "首頁"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "tags"
+  name = "標籤"
+  url = "/tags/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "archives"
+  name = "歸檔"
+  url = "/archives/"
+  weight = 40
+
+[[menu.main]]
+  identifier = "search"
+  name = "搜尋"
+  url = "/search/"
+  weight = 50
+
+[[menu.main]]
+  identifier = "about"
+  name = "關於"
+  url = "/about/"
+  weight = 60
+
+
+# Markdown 設定
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineAnchors = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = false
+    style = "monokai"
+    tabWidth = 4
+
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# 隱私設定
+[privacy]
+  [privacy.disqus]
+    disable = false
+  [privacy.googleAnalytics]
+    disable = false
+
+# 分類法設定
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
