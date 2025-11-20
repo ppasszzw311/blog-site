@@ -1,0 +1,63 @@
+{{- if .Store.Get "hasMermaid" }}
+<!-- Mermaid JS -->
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    // 獲取當前主題
+    const getTheme = () => {
+        const htmlTheme = document.querySelector('html').dataset.theme;
+        return htmlTheme === 'dark' ? 'dark' : 'default';
+    };
+
+    // 初始化 Mermaid
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: getTheme(),
+        securityLevel: 'loose',
+    });
+
+    // 監聽主題切換事件
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            // 延遲執行以確保 DOM 已更新
+            setTimeout(() => {
+                const newTheme = getTheme();
+                mermaid.initialize({
+                    theme: newTheme,
+                    securityLevel: 'loose',
+                });
+
+                // 重新渲染所有 mermaid 圖表
+                document.querySelectorAll('.mermaid').forEach((element) => {
+                    const graphDefinition = element.textContent;
+                    element.removeAttribute('data-processed');
+                    element.innerHTML = graphDefinition;
+                });
+                mermaid.run();
+            }, 100);
+        });
+    }
+</script>
+
+<!-- Mermaid 樣式 -->
+<style>
+    .mermaid {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 1rem;
+    }
+
+    .mermaid svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 確保在深色模式下圖表可讀 */
+    @media (prefers-color-scheme: dark) {
+        .mermaid svg {
+            background-color: transparent;
+        }
+    }
+</style>
+{{- end }}

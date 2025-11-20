@@ -50,6 +50,11 @@ enableGitInfo = true
   fuseOpts.minMatchCharLength = 0
   fuseOpts.keys = ["title", "permalink", "summary", "content"]
 
+  # 啟用 Mermaid 圖表
+  [params.mermaid]
+    enable = true
+    theme = "default"  # 選項: default, dark, forest, neutral
+
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
